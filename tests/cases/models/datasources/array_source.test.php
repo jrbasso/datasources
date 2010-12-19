@@ -415,6 +415,21 @@ class ArraySourceTest extends CakeTestCase {
 		$expected = array('ArrayModel' => array('name' => 'Brazil'));
 		$this->assertEqual($result, $expected);
 	}
+
+/**
+ * testField
+ *
+ * @return void
+ * @access public
+ */
+	function testField() {
+		$result = $this->Model->field('id', array('ArrayModel.name' => 'Brazil'));
+		$this->assertIdentical($result, 2);
+
+		$result = $this->Model->field('id', array('ArrayModel.name' => 'Not existing name'));
+		$this->assertFalse($result);
+	}
+
 }
 
 /**

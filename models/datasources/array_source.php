@@ -159,6 +159,9 @@ class ArraySource extends Datasource {
 		// Filter fields
 		if (!empty($queryData['fields'])) {
 			$listOfFields = array();
+			if (!is_array($queryData['fields'])) {
+				$queryData['fields'] = array($queryData['fields']);
+			}
 			foreach ($queryData['fields'] as $field) {
 				if (strpos($field, '.') !== false) {
 					list($alias, $field) = explode('.', $field, 2);
